@@ -33,9 +33,10 @@ pipeline:
       - awslogs-region=us-west-2
     environment_variables:
       - NAME=World
+      - REDIS_HOST=
     tag: latest
     port_mappings:
-      - 80 80
+      - 80 4000
     desired_count: 1
     deployment_configuration: 50 200
     secrets: [ aws_access_key, aws_secret_key ]
