@@ -11,3 +11,35 @@ pipeline:
       - pip install pytest
       - pytest tests.py -s
 
+  publish:
+    image: plugins/docker
+    repo: fbcbarbosa/hello
+    tags: [ 'latest' ]
+    secrets: [ docker_username, docker_password ]
+    when:
+      branch:
+        - master
+
+  deploy:
+    image: peloton/drone-ecs
+    region: us-west-2
+    cluster: hello
+    service: hello
+    family: hello
+    docker_image: fbcbarbosa/hello
+    log_driver: awslogs
+    log_options:
+      - awslogs-group=my-ecs-group
+      - awslogs-region=us-west-2
+    environment_variables:
+      - NAME=World
+    tag: latest
+    port_mappings:
+      - 80 80
+    desired_count: 1
+    deployment_configuration: 50 200
+    secrets: [ aws_access_key, aws_secret_key ]
+    when:
+      branch:
+        - master
+
