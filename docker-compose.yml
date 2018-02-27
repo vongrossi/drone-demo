@@ -15,6 +15,3 @@ services:
 networks:
   hello:
 
-volumes:
-  workshop_data:
-
