@@ -16,6 +16,7 @@ services:
       - DRONE_GITHUB_CLIENT=${DRONE_GITHUB_CLIENT}
       - DRONE_GITHUB_SECRET=${DRONE_GITHUB_SECRET}
       - DRONE_SECRET=${DRONE_SECRET}
+      - DRONE_ADMIN=fbcbarbosa
 
   drone-agent:
     image: drone/agent:0.8.4

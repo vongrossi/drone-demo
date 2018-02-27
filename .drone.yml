@@ -33,7 +33,7 @@ pipeline:
       - awslogs-region=us-west-2
     environment_variables:
       - NAME=World
-      - REDIS_HOST=hello-001.slsy59.0001.usw2.cache.amazonaws.com:6379
+      - REDIS_HOST=hello.slsy59.ng.0001.usw2.cache.amazonaws.com
     tag: latest
     port_mappings:
       - 80 4000
