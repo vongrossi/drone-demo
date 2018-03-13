@@ -11,3 +11,11 @@ pipeline:
       - pip install pytest
       - pytest tests.py -s
 
+  deploy-heroku:
+    image: fbcbarbosa/heroku
+    app: hello-estabilis
+    login: fbcbarbosa@gmail.com
+    secrets: [ plugin_token ]
+    when:
+      branch: master
+
