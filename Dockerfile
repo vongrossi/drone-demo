@@ -1,8 +1,14 @@
 FROM python:2.7-slim
+
 WORKDIR /app
-ADD app.py requirements.txt ./
+ADD requirements.txt ./
 RUN pip install -r requirements.txt
+
+ADD app.py ./
+
+ENV PORT 4000
 ENV NAME World
-EXPOSE 4000
+
+EXPOSE $PORT
 CMD ["python", "app.py"]
 
